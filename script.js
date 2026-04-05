@@ -20,7 +20,7 @@ const getBookmarks = () => {
         const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
         for(const obj of bookmarks){
             const keys = Object.keys(obj);
-            if(!(keys.includes("name") && keys.includes("category") && keys.includes("url"))){
+            if(!(keys.includes("name") && !keys.includes("category") && !keys.includes("url"))){
                 return [];
             }
         }
