@@ -29,3 +29,26 @@ const getBookmarks = () => {
         return []
     }
 }
+
+const displayOrCloseForm = () =>{   
+    if(formSection.classList.contains("hidden")){
+        mainSection.classList.add("hidden");
+        formSection.classList.remove("hidden");
+        return;
+    }
+    if(mainSection.classList.contains("hidden")){
+        formSection.classList.add("hidden");
+        mainSection.classList.remove("hidden");
+        return;
+    }
+}
+
+addBookmarkBtn.addEventListener("click", () => {
+    displayOrCloseForm();
+    categoryName[0].textContent = categorySelect.value.toUpperCase();
+
+});
+
+closeFormBtn.addEventListener("click", () => {
+    displayOrCloseForm();
+});
