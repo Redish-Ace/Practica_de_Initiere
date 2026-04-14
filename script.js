@@ -113,3 +113,22 @@ viewCategoryBtn.addEventListener("click", () => {
 closeListBtn.addEventListener("click", () => {
     displayOrHideCategory();
 });
+
+deleteBtn.addEventListener("click", () => {
+    const radioBtn = document.querySelectorAll("input[type=radio]:checked");
+    const bookmarks = getBookmarks();
+
+    const value = radioBtn[0] ? radioBtn[0].value : '';
+    const category = radioBtn[0] ? radioBtn[0].name : '';
+
+
+    for(let i = 0; i < bookmarks.length; i++){
+        if(bookmarks[i].name === value && bookmarks[i].category == category){
+            bookmarks.splice(i, 1);
+            break;
+        }
+    }
+
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    updateList();
+});
