@@ -71,16 +71,3 @@ addBookmarkFormBtn.addEventListener("click", () => {
 
     displayOrCloseForm();
 });
-
-const displayOrHideCategory = () => {
-    if(listSection.classList.contains("hidden")){
-        mainSection.classList.add("hidden");
-        listSection.classList.remove("hidden");
-        return;
-    }
-    if(mainSection.classList.contains("hidden")){
-        listSection.classList.add("hidden");
-        mainSection.classList.remove("hidden");
-        return;
-    }
-}
