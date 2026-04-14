@@ -52,3 +52,35 @@ addBookmarkBtn.addEventListener("click", () => {
 closeFormBtn.addEventListener("click", () => {
     displayOrCloseForm();
 });
+
+addBookmarkFormBtn.addEventListener("click", () => {
+    const bookmarks = getBookmarks();
+
+    const newBookmark = {
+        name: nameInput.value,
+        category: categorySelect.value,
+        url: urlInput.value
+    }
+
+    bookmarks.push(newBookmark);
+
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+
+    nameInput.value = "";
+    urlInput.value = "";
+
+    displayOrCloseForm();
+});
+
+const displayOrHideCategory = () => {
+    if(listSection.classList.contains("hidden")){
+        mainSection.classList.add("hidden");
+        listSection.classList.remove("hidden");
+        return;
+    }
+    if(mainSection.classList.contains("hidden")){
+        listSection.classList.add("hidden");
+        mainSection.classList.remove("hidden");
+        return;
+    }
+}
