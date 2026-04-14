@@ -121,7 +121,6 @@ deleteBtn.addEventListener("click", () => {
     const value = radioBtn[0] ? radioBtn[0].value : '';
     const category = radioBtn[0] ? radioBtn[0].name : '';
 
-
     for(let i = 0; i < bookmarks.length; i++){
         if(bookmarks[i].name === value && bookmarks[i].category == category){
             bookmarks.splice(i, 1);
