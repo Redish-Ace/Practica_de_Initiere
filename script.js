@@ -71,3 +71,45 @@ addBookmarkFormBtn.addEventListener("click", () => {
 
     displayOrCloseForm();
 });
+
+const displayOrHideCategory = () => {
+    if(listSection.classList.contains("hidden")){
+        mainSection.classList.add("hidden");
+        listSection.classList.remove("hidden");
+        return;
+    }
+    if(mainSection.classList.contains("hidden")){
+        listSection.classList.add("hidden");
+        mainSection.classList.remove("hidden");
+        return;
+    }
+}
+const updateList = () => {
+    const category = categorySelect.value;
+    const bookmarks = getBookmarks();
+
+    listDiv.innerHTML = "";
+
+    for(const obj of bookmarks){
+        if(obj.category === category){
+            listDiv.innerHTML += `
+                <input type="radio" id="${obj.name}" value="${obj.name}" name="${obj.category}">
+                <label for="${obj.name}"><a href="${obj.url}">${obj.name}</a></label>
+            `;
+        }
+    }
+
+    if(listDiv.innerHTML.length == 0){
+        listDiv.innerHTML = "<p>No Bookmarks Found</p>";
+    }
+}
+
+viewCategoryBtn.addEventListener("click", () => {
+    displayOrHideCategory();
+
+    updateList();
+});
+
+closeListBtn.addEventListener("click", () => {
+    displayOrHideCategory();
+});
